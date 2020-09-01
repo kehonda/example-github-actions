@@ -1,4 +1,4 @@
-name: Update Master HEAD
+name: Pulling into develop
 
 on:
   push:
