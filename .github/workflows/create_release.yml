@@ -1,0 +1,19 @@
+name: Create Release Branch and Pull Request
+
+on: [ workflow_dispatch ]
+
+jobs:
+  add_label_and_reviewer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout dev
+        uses: actions/checkout@v2
+        with:
+          ref: dev
+
+      - name: Create new Branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git checkout -b release
+          git push origin release
