@@ -13,3 +13,4 @@ jobs:
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           configuration-path: ".github/labeler-develop.yml"
+      - uses: kentaro-m/auto-assign-action@v1.1.1
