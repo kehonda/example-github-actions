@@ -45,7 +45,7 @@ jobs:
           body: Credit new contributors by updating AUTHORS
           branch: update-authors
       - name: create diff
-        run: echo ::set-env name=BODY::$(git log --merges --first-parent --reverse --pretty=format:"* %b")
+        run: echo ::set-env name=BODY::$(git log origin/master..origin/develop --merges --first-parent --reverse --pretty=format:"* %b \n")
       - name: pull-request
         uses: repo-sync/pull-request@v2
         with:

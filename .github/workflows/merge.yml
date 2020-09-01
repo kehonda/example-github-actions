@@ -1,0 +1,22 @@
+name: Update Master HEAD
+
+on:
+  push:
+    branches:
+      - master
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  create:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_branch: "develop"
+          destination_branch: "master"
+          pr_title: "Pulling ${{ github.ref }} into develop" # Title of pull request
+          pr_body: "${{ env.BODY }}"
+
