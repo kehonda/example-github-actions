@@ -3,14 +3,11 @@ name: Create Release Branch and Pull Request
 on: [ workflow_dispatch ]
 
 jobs:
-  add_label_and_reviewer:
+  create_release:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout dev
+      - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          ref: dev
-
       - name: Create new Branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
