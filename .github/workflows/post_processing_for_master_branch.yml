@@ -1,9 +1,9 @@
-name: Add Label and Reviewer for develop branch
+name: Add Label and Reviewer for master branch
 
 on:
   pull_request:
     branches:
-      - develop
+      - master
 
 jobs:
   add_label_and_reviewer:
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/labeler@v2
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          configuration-path: '.github/labeler-develop.yml'
+          configuration-path: '.github/labeler/master.yml'
       - uses: kentaro-m/auto-assign-action@v1.1.1
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
