@@ -26,8 +26,8 @@ jobs:
         run: echo $BRANCH_NAME
 
       - name: Create Release Branch
-        uses: peterjgrainger/action-create-branch@v2.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          branch: ${{ env.BRANCH_NAME }}
+        run: |
+          git checkout -b ${{ env.BRANCH_NAME }}
+          git push -u origin ${{ env.BRANCH_NAME }}
