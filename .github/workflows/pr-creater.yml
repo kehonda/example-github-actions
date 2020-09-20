@@ -20,6 +20,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch_depth: 0
     - name: pull-request
       uses: repo-sync/pull-request@v2
       with:
