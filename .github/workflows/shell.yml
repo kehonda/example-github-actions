@@ -22,6 +22,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: set-env
         run: echo ::set-env name=EXAMPLE::$(./example.sh)
+        working-directory: ./.github/workflows
       - name: debug
         run: |
           echo $EXAMPLE
