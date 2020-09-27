@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: shell
+name: shell-env-test
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the develop branch
@@ -18,11 +18,18 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
+        with:
+          fetch-depth: 0
       # Runs a set of commands using the runners shell
       - name: set-env
-        run: echo ::set-env name=EXAMPLE::$(./example.sh)
+        run: echo ::set-env name=EXAMPLE::$(./create_description.sh)
         working-directory: ./.github/workflows
       - name: debug
         run: |
           echo $EXAMPLE
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        pr_title: 'shell'
+        pr_body: ${{ env.EXAMPLE }}
